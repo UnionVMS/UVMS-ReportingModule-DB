@@ -1,0 +1,172 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>liquibase</groupId>
+    <artifactId>liquibase</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>liquibase</name>
+
+    <properties>
+        <liquibase.contexts>default</liquibase.contexts>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <citnetpath>webgate.ec.europa.eu/CITnet/</citnetpath>
+        <svn.projectname>UNIONVMS</svn.projectname>
+    </properties>
+
+    <profiles>
+
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <db.driver>org.postgresql.Driver</db.driver>
+                <db.url>jdbc:postgresql://localhost:5432/uvms</db.url>
+                <db.user>reporting</db.user>
+                <db.passwd>reporting</db.passwd>
+                <db.defaultSchema>reporting</db.defaultSchema>
+                <db.changeLogFile>changelog/db-changelog-master.xml</db.changeLogFile>
+                <db.outputFile>changelog/generatedChangelog.xml</db.outputFile>
+            </properties>
+        </profile>
+        
+        <profile>
+            <id>test</id>
+             <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+            	<db.contexts>prod,test</db.contexts>
+            	<db.dropFirst>true</db.dropFirst>
+            	<db.verbose>true</db.verbose>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>postgres</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <!-- This profile will get deactivated as soon as another profile
+          of the SAME pom becomes active. It will remain active if a profile from another 
+          location (eg:the user settings) is activated. -->
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>sql-maven-plugin</artifactId>
+                        <version>1.5</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.postgresql</groupId>
+                                <artifactId>postgresql</artifactId>
+                                <version>9.4-1201-jdbc41</version>
+                            </dependency>
+                        </dependencies>
+                        <configuration>
+                            <driver>${db.driver}</driver>
+                            <url>${db.url}</url>
+                            <username>${db.user}</username>
+                            <password>${db.passwd}</password>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>drop-schema</id>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <phase>clean</phase>
+                                <configuration>
+                                    <autocommit>true</autocommit>
+                                    <orderFile>ascending</orderFile>
+                                    <delimiter>;</delimiter>
+                                    <delimiterType>normal</delimiterType>
+                                    <onError>continue</onError>
+                                    <keepFormat>false</keepFormat>
+                                    <fileset>
+                                        <basedir>.</basedir>
+                                        <includes>
+                                            <include>scripts/drop_all_objects.sql</include>
+                                        </includes>
+                                    </fileset>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4-1201-jdbc41</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.lonnyj</groupId>
+            <artifactId>liquibase-spatial</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-maven-plugin</artifactId>
+                    <version>3.4.0</version>
+                    <configuration>
+                        <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                        <changeLogFile>${db.changeLogFile}</changeLogFile>
+                        <driver>${db.driver}</driver>
+                        <url>${db.url}</url>
+                        <username>${db.user}</username>
+                        <password>${db.passwd}</password>
+                        <defaultSchemaName>${db.defaultSchema}</defaultSchemaName>
+                        <outputChangeLogFile>${db.outputFile}</outputChangeLogFile>
+                        <contexts>${db.contexts}</contexts>
+            			<dropFirst>${db.dropFirst}</dropFirst>
+            			<verbose>${db.verbose}</verbose>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>update-schema</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>update</goal>
+                                <goal>tag</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <tagBase>https://${citnetpath}svn/${svn.projectname}/tags/USM/liquibase</tagBase>
+                    <tagNameFormat>@{project.artifactId}-@{project.version}</tagNameFormat>
+                    <goals>generate-sources</goals>
+                    <preparationGoals>generate-sources</preparationGoals>
+                    <arguments>-DskipTests</arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
