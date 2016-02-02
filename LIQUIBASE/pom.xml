@@ -17,7 +17,7 @@
     <profiles>
 
         <profile>
-            <id>local</id>
+            <id>postgres-local</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
