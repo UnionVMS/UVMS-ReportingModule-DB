@@ -43,8 +43,8 @@
                 <db.user>reporting</db.user>
                 <db.passwd>reporting</db.passwd>
                 <db.defaultSchema>reporting</db.defaultSchema>
-                <db.changeLogFile>changelog/db-changelog-master.xml</db.changeLogFile>
-                <db.outputFile>changelog/generatedChangelog.xml</db.outputFile>
+                <db.changeLogFile>postgres/changelog/db-changelog-master.xml</db.changeLogFile>
+                <db.outputFile>postgres/changelog/generatedChangelog.xml</db.outputFile>
             </properties>
         </profile>
         
