@@ -1,0 +1,99 @@
+DROP SEQUENCE "REPORT_ID_SEQ";
+DROP SEQUENCE "EXECUTION_LOG_ID_SEQ";
+DROP SEQUENCE "FILTER_ID_SEQ";
+
+DROP TABLE "execution_log";
+DROP TABLE "filter";
+DROP TABLE "report";
+
+CREATE SEQUENCE "REPORT_ID_SEQ";
+CREATE SEQUENCE "EXECUTION_LOG_ID_SEQ";
+CREATE SEQUENCE "FILTER_ID_SEQ";
+
+
+CREATE TABLE "execution_log" (   "id" NUMBER(20,0), "executed_by" NVARCHAR2(255), "executed_on" DATE, "report_id" NUMBER(20,0));
+
+-- ----------------------------
+--  Records of "execution_log"
+-- ----------------------------
+INSERT INTO "execution_log" ("id", "executed_by", "executed_on", "report_id") VALUES ('1', 'rep_power', TO_DATE('2016-04-19 10:11:40','YYYY-MM-DD HH24:MI:SS'), '10');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for "filter"
+-- ----------------------------
+
+CREATE TABLE "filter" (   "filter_type" NVARCHAR2(31), "filter_id" NUMBER(20,0), "guid" NVARCHAR2(255), "name" NVARCHAR2(255), "username" NVARCHAR2(255), "end_date" DATE, "position" NVARCHAR2(255), "selector" NVARCHAR2(255), "value" NUMBER, "start_date" DATE, "max_speed" NUMBER, "min_speed" NUMBER, "mov_type" NVARCHAR2(30), "mov_activity" NVARCHAR2(30), "max_time" NUMBER, "min_time" NUMBER, "min_duration" NUMBER, "max_duration" NUMBER, "min_avg_speed" NUMBER, "max_avg_speed" NUMBER, "min_distance" NUMBER, "max_distance" NUMBER, "seg_category" NVARCHAR2(255), "report_id" NUMBER(20,0), "area_type" NVARCHAR2(255), "area_id" NUMBER(20,0));
+
+-- ----------------------------
+--  Records of "filter"
+-- ----------------------------
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '1', null, null, null, TO_DATE('2015-12-24 17:40:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2015-01-24 17:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '1', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '2', null, null, null, TO_DATE('2015-12-24 17:40:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2015-01-24 17:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '2', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '3', null, null, null, TO_DATE('2015-12-24 17:40:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2015-01-24 17:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '3', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '4', null, null, null, TO_DATE('2015-12-24 17:40:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2015-01-24 17:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '4', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '7', null, null, null, TO_DATE('2016-01-05 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2016-01-04 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '5', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSPOS', '10', null, null, null, null, null, null, null, null, '60', '5', '1', '5', null, null, null, null, null, null, null, null, null, '6', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '12', null, null, null, TO_DATE('2016-01-05 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2016-01-04 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '6', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSTRACK', '11', null, null, null, null, null, null, null, null, null, null, null, null, '10', '4', '20', '60', null, null, null, null, null, '6', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSSEG', '13', null, null, null, null, null, null, null, null, '3', '1', null, null, null, null, '10', '10', null, null, null, null, '5', '7', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSPOS', '14', null, null, null, null, null, null, null, null, '60', '5', '1', '5', null, null, null, null, null, null, null, null, null, '7', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '16', null, null, null, TO_DATE('2016-01-05 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2016-01-04 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '7', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSSEG', '17', null, null, null, null, null, null, null, null, '3', '1', null, null, null, null, '10', '10', null, null, null, null, '5', '8', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSPOS', '18', null, null, null, null, null, null, null, null, '60', '5', '1', '5', null, null, null, null, null, null, null, null, null, '8', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSTRACK', '19', null, null, null, null, null, null, null, null, null, null, null, null, '10', '4', '20', '60', null, null, null, null, null, '8', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '20', null, null, null, TO_DATE('2016-01-05 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2016-01-04 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '8', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSSEG', '21', null, null, null, null, null, null, null, null, '3', '1', null, null, null, null, '10', '10', null, null, null, null, '5', '9', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSPOS', '22', null, null, null, null, null, null, null, null, '60', '5', '1', '5', null, null, null, null, null, null, null, null, null, '9', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '24', null, null, null, TO_DATE('2016-01-05 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2016-01-04 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '9', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '25', null, null, null, TO_DATE('2016-02-16 17:40:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2016-02-14 17:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '10', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSPOS', '26', null, null, null, null, null, null, null, null, '60', '5', '1', '5', null, null, null, null, null, null, null, null, null, '11', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('DATETIME', '27', null, null, null, TO_DATE('2016-01-05 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, 'all', null, TO_DATE('2016-01-04 11:30:00','YYYY-MM-DD HH24:MI:SS'), null, null, null, null, null, null, null, null, null, null, null, null, null, '11', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSSEG', '28', null, null, null, null, null, null, null, null, '3', '1', null, null, null, null, '10', '10', null, null, null, null, '5', '11', null, null);
+INSERT INTO "filter" ("filter_type", "filter_id", "guid", "name", "username", "end_date", "position", "selector", "value", "start_date", "max_speed", "min_speed", "mov_type", "mov_activity", "max_time", "min_time", "min_duration", "max_duration", "min_avg_speed", "max_avg_speed", "min_distance", "max_distance", "seg_category", "report_id", "area_type", "area_id") VALUES ('VMSTRACK', '29', null, null, null, null, null, null, null, null, null, null, null, null, '10', '4', '20', '60', null, null, null, null, null, '11', null, null);
+COMMIT;
+
+-- ----------------------------
+--  Table structure for "report"
+-- ----------------------------
+
+CREATE TABLE "report" (   "id" NUMBER(20,0), "created_on" DATE, "created_by" NVARCHAR2(255), "deleted_by" NVARCHAR2(255), "deleted_on" DATE, "description" NVARCHAR2(255), "is_deleted" NVARCHAR2(1), "name" NVARCHAR2(255), "with_map" NVARCHAR2(1), "scope_name" NVARCHAR2(255), "visibility" NVARCHAR2(255));
+
+-- ----------------------------
+--  Records of "report"
+-- ----------------------------
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('1', TO_DATE('2016-04-19 09:34:02','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'A report with common filter', 'N', 'Report-1', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('2', TO_DATE('2016-04-19 09:34:15','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'A report with common filter', 'N', 'Report-1', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('3', TO_DATE('2016-04-19 09:35:13','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'A report with common filter', 'N', 'Report-1', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('4', TO_DATE('2016-04-19 09:36:12','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'A report with common filter', 'N', 'Report-1', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('5', TO_DATE('2016-04-19 09:36:26','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'Report mixed', 'N', 'Report-9', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('6', TO_DATE('2016-04-19 09:43:08','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'Report mixed', 'N', 'Report-9', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('7', TO_DATE('2016-04-19 09:44:35','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'Report mixed', 'N', 'Report-9', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('8', TO_DATE('2016-04-19 09:48:34','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'Report mixed', 'N', 'Report-9', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('9', TO_DATE('2016-04-19 09:48:46','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'Report mixed', 'N', 'Updated report-9', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('10', TO_DATE('2016-04-19 10:02:10','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'A report with common filter', 'N', 'Report-1', 'Y', 'EC', 'PRIVATE');
+INSERT INTO "report" ("id", "created_on", "created_by", "deleted_by", "deleted_on", "description", "is_deleted", "name", "with_map", "scope_name", "visibility") VALUES ('11', TO_DATE('2016-04-19 10:19:47','YYYY-MM-DD HH24:MI:SS'), 'rep_power', null, null, 'Report mixed', 'N', 'Report-9', 'Y', 'EC', 'PRIVATE');
+COMMIT;
+
+-- ----------------------------
+--  Primary key structure for table "execution_log"
+-- ----------------------------
+ALTER TABLE "execution_log" ADD CONSTRAINT "execution_log_pkey" PRIMARY KEY("id");
+
+-- ----------------------------
+--  Primary key structure for table "filter"
+-- ----------------------------
+ALTER TABLE "filter" ADD CONSTRAINT "filter_pkey" PRIMARY KEY("filter_id");
+
+-- ----------------------------
+--  Primary key structure for table "report"
+-- ----------------------------
+ALTER TABLE "report" ADD CONSTRAINT "report_pkey" PRIMARY KEY("id");
+
+
+alter table "execution_log" add constraint "fk_report_execution_log" FOREIGN KEY ("report_id") references "report" ("id")
+initially deferred deferrable;
+
+alter table "filter" add constraint "fk_report_filter" FOREIGN KEY ("report_id") references "report" ("id")
+initially deferred deferrable;
+
