@@ -23,12 +23,12 @@
             </activation>
             <properties>
                 <db.driver>oracle.jdbc.driver.OracleDriver</db.driver>
-                <db.url>jdbc:oracle:thin:@localhost:1521:xe</db.url>
-                <db.user>system</db.user>
-                <db.passwd>manager</db.passwd>
+                <db.url>jdbc:oracle:thin:@10.10.10.9:1521:db12102</db.url>
+                <db.user>REPORTING</db.user>
+                <db.passwd>REPORTING</db.passwd>
                 <db.defaultSchema>REPORTING</db.defaultSchema>
-                <db.changeLogFile>oracle/changelog/db-changelog-master.xml</db.changeLogFile>
-                <db.outputFile>oracle/changelog/generatedChangelog.xml</db.outputFile>
+                <db.changeLogFile>changelog/db-changelog-master.xml</db.changeLogFile>
+                <db.outputFile>changelog/generatedChangelog.xml</db.outputFile>
             </properties>
         </profile>
 
@@ -43,8 +43,8 @@
                 <db.user>reporting</db.user>
                 <db.passwd>reporting</db.passwd>
                 <db.defaultSchema>reporting</db.defaultSchema>
-                <db.changeLogFile>postgres/changelog/db-changelog-master.xml</db.changeLogFile>
-                <db.outputFile>postgres/changelog/generatedChangelog.xml</db.outputFile>
+                <db.changeLogFile>changelog/db-changelog-master.xml</db.changeLogFile>
+                <db.outputFile>changelog/generatedChangelog.xml</db.outputFile>
             </properties>
         </profile>
         
@@ -121,7 +121,7 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>3.4.0</version>
+            <version>3.5.1</version>
         </dependency>
 
         <dependency>
@@ -131,16 +131,11 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.lonnyj</groupId>
-            <artifactId>liquibase-spatial</artifactId>
-            <version>1.2.1</version>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.4</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc14</artifactId>
-            <version>10.2.0.4</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -150,6 +145,13 @@
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-maven-plugin</artifactId>
                     <version>3.4.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.github.lonnyj</groupId>
+                            <artifactId>liquibase-spatial</artifactId>
+                            <version>1.2.1</version>
+                        </dependency>
+                    </dependencies>
                     <configuration>
                         <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                         <changeLogFile>${db.changeLogFile}</changeLogFile>

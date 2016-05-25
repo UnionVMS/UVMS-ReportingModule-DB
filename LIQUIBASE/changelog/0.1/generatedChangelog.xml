@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet author="emrinalgr" id="1439890745706-51">
+        <createSequence cycle="false" incrementBy="1" maxValue="9223372036854775807" minValue="1"
+                        sequenceName="execution_log_seq" startValue="1"/>
+    </changeSet>
+
+    <changeSet author="emrinalgr" id="1439890745706-52">
+        <createSequence cycle="false" incrementBy="1" maxValue="9223372036854775807" minValue="1"
+                        sequenceName="report_seq" startValue="1"/>
+    </changeSet>
+
+    <changeSet author="emrinalgr" id="1439890745706-53">
+        <createSequence cycle="false" incrementBy="1" maxValue="9223372036854775807" minValue="1"
+                        sequenceName="filter_seq" startValue="1"/>
+    </changeSet>
+
     <changeSet author="rinaldgr (generated)" id="1443778291188-4">
         <createTable tableName="execution_log">
             <column autoIncrement="true" name="id" type="BIGSERIAL">
@@ -8,7 +25,7 @@
             <column name="executed_by" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="executed_on" type="TIMESTAMP(29) WITHOUT TIME ZONE">
+            <column name="executed_on" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="report_id" type="BIGINT">
@@ -27,23 +44,23 @@
             <column name="guid" type="VARCHAR(255)"/>
             <column name="name" type="VARCHAR(255)"/>
             <column name="username" type="VARCHAR(255)"/>
-            <column name="end_date" type="TIMESTAMP(29) WITHOUT TIME ZONE"/>
+            <column name="end_date" type="TIMESTAMP"/>
             <column name="position" type="VARCHAR(255)"/>
             <column name="selector" type="VARCHAR(255)"/>
-            <column name="value" type="numeric"/>
-            <column name="start_date" type="TIMESTAMP(29) WITHOUT TIME ZONE"/>
-            <column name="max_speed" type="numeric"/>
-            <column name="min_speed" type="numeric"/>
+            <column name="value" type="FLOAT"/>
+            <column name="start_date" type="TIMESTAMP"/>
+            <column name="max_speed" type="FLOAT"/>
+            <column name="min_speed" type="FLOAT"/>
             <column name="mov_type" type="VARCHAR(30)"/>
             <column name="mov_activity" type="VARCHAR(30)"/>
-            <column name="max_time" type="numeric"/>
-            <column name="min_time" type="numeric"/>
-            <column name="min_duration" type="numeric"/>
-            <column name="max_duration" type="numeric"/>
-			<column name="min_avg_speed" type="numeric"/>
-			<column name="max_avg_speed" type="numeric"/>
-			<column name="min_distance" type="numeric"/>
-			<column name="max_distance" type="numeric"/>
+            <column name="max_time" type="FLOAT"/>
+            <column name="min_time" type="FLOAT"/>
+            <column name="min_duration" type="FLOAT"/>
+            <column name="max_duration" type="FLOAT"/>
+			<column name="min_avg_speed" type="FLOAT"/>
+			<column name="max_avg_speed" type="FLOAT"/>
+			<column name="min_distance" type="FLOAT"/>
+			<column name="max_distance" type="FLOAT"/>
 			<column name="seg_category" type="VARCHAR(255)"/>
             <column name="report_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -57,14 +74,14 @@
             <column autoIncrement="true" name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="report_pkey"/>
             </column>
-            <column name="created_on" type="TIMESTAMP(29) WITHOUT TIME ZONE">
+            <column name="created_on" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="deleted_by" type="VARCHAR(255)"/>
-            <column name="deleted_on" type="TIMESTAMP(29) WITHOUT TIME ZONE"/>
+            <column name="deleted_on" type="TIMESTAMP"/>
             <column name="description" type="VARCHAR(255)"/>
             <column name="is_deleted" type="VARCHAR(1)"/>
             <column name="name" type="VARCHAR(255)">
