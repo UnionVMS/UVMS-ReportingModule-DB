@@ -19,7 +19,7 @@
 
     <changeSet author="rinaldgr (generated)" id="1443778291188-4">
         <createTable tableName="execution_log">
-            <column autoIncrement="true" name="id" type="BIGSERIAL">
+            <column name="id" type="BIGINT" defaultValueSequenceNext="execution_log_seq">
                 <constraints primaryKey="true" primaryKeyName="execution_log_pkey"/>
             </column>
             <column name="executed_by" type="VARCHAR(255)">
@@ -38,7 +38,7 @@
             <column name="filter_type" type="VARCHAR(31)">
                 <constraints nullable="false"/>
             </column>
-            <column autoIncrement="true" name="filter_id" type="BIGSERIAL">
+            <column name="filter_id" type="BIGINT" defaultValueSequenceNext="filter_seq">
                 <constraints primaryKey="true" primaryKeyName="filter_pkey"/>
             </column>
             <column name="guid" type="VARCHAR(255)"/>
@@ -71,7 +71,7 @@
     </changeSet>
     <changeSet author="rinaldgr (generated)" id="1443778291184-6">
         <createTable tableName="report">
-            <column autoIncrement="true" name="id" type="BIGSERIAL">
+            <column name="id" type="BIGINT" defaultValueSequenceNext="report_seq">
                 <constraints primaryKey="true" primaryKeyName="report_pkey"/>
             </column>
             <column name="created_on" type="TIMESTAMP">
