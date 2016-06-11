@@ -65,7 +65,7 @@
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
-            <!-- This profile will get deactivated as soon as another profile
+            This profile will get deactivated as soon as another profile
           of the SAME pom becomes active. It will remain active if a profile from another 
           location (eg:the user settings) is activated.
             <build>
