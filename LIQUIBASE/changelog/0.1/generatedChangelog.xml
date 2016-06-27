@@ -19,7 +19,7 @@
 
     <changeSet author="rinaldgr (generated)" id="1443778291188-4">
         <createTable tableName="execution_log">
-            <column name="id" type="BIGINT" defaultValueSequenceNext="execution_log_seq">
+            <column name="id" type="BIGINT" >
                 <constraints primaryKey="true" primaryKeyName="execution_log_pkey"/>
             </column>
             <column name="executed_by" type="VARCHAR(255)">
@@ -33,12 +33,22 @@
             </column>
         </createTable>
     </changeSet>
+	
+	<changeSet author="dubduan" id="16834688168717" dbms="postgresql">
+    <addDefaultValue 
+            columnDataType="BIGINT"
+            columnName="id"
+            defaultValueSequenceNext="execution_log_seq"
+            tableName="execution_log"/>
+	</changeSet>
+	
+	
     <changeSet author="rinaldgr (generated)" id="1443778291188-5">
         <createTable tableName="filter">
             <column name="filter_type" type="VARCHAR(31)">
                 <constraints nullable="false"/>
             </column>
-            <column name="filter_id" type="BIGINT" defaultValueSequenceNext="filter_seq">
+            <column name="filter_id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="filter_pkey"/>
             </column>
             <column name="guid" type="VARCHAR(255)"/>
@@ -69,9 +79,19 @@
             <column name="area_id" type="BIGINT"/>
         </createTable>
     </changeSet>
+
+	<changeSet author="dubduan" id="12884688168711" dbms="postgresql">
+    <addDefaultValue 
+            columnDataType="BIGINT"
+            columnName="filter_id"
+            defaultValueSequenceNext="filter_seq"
+            tableName="filter"/>
+	</changeSet>
+
+	
     <changeSet author="rinaldgr (generated)" id="1443778291184-6">
         <createTable tableName="report">
-            <column name="id" type="BIGINT" defaultValueSequenceNext="report_seq">
+            <column name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="report_pkey"/>
             </column>
             <column name="created_on" type="TIMESTAMP">
@@ -98,6 +118,16 @@
             </column>
         </createTable>
     </changeSet>
+	
+	<changeSet author="dubduan" id="12882228169711" dbms="postgresql">
+    <addDefaultValue 
+            columnDataType="BIGINT"
+            columnName="id"
+            defaultValueSequenceNext="report_seq"
+            tableName="report"/>
+	</changeSet>
+
+	
     <changeSet author="rinaldgr (generated)" id="1443778291188-7">
         <addUniqueConstraint columnNames="report_id, executed_by" constraintName="uk_6cydkqytehkrquueneylekysg" tableName="execution_log"/>
     </changeSet>
@@ -107,4 +137,51 @@
     <changeSet author="rinaldgr (generated)" id="1443778291188-9">
         <addForeignKeyConstraint baseColumnNames="report_id" baseTableName="execution_log" constraintName="fk_k4epdh9wpjr4fao3qh6ap0hpt" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="report"/>
     </changeSet>
+	
+	
+	<changeSet author="dubduan" id="14291890711706-31" dbms="oracle">
+	
+        <createProcedure>
+            CREATE OR REPLACE TRIGGER trg_filter
+            BEFORE INSERT
+            ON filter
+            FOR EACH ROW
+            DECLARE
+            BEGIN
+            SELECT filter_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+            END trg_filter;
+        </createProcedure>			
+    </changeSet>
+	
+	
+	<changeSet author="dubduan" id="14291800791706-31" dbms="oracle">
+	
+        <createProcedure>
+            CREATE OR REPLACE TRIGGER trg_report
+            BEFORE INSERT
+            ON report
+            FOR EACH ROW
+            DECLARE
+            BEGIN
+            SELECT report_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+            END trg_report;
+        </createProcedure>			
+    </changeSet>	
+	
+	<changeSet author="dubduan" id="14231802791906-31" dbms="oracle">
+	
+        <createProcedure>
+            CREATE OR REPLACE TRIGGER trg_execution_log
+            BEFORE INSERT
+            ON execution_log
+            FOR EACH ROW
+            DECLARE
+            BEGIN
+            SELECT execution_log_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+            END trg_execution_log;
+        </createProcedure>			
+    </changeSet>	
+	
+	
+	
 </databaseChangeLog>
