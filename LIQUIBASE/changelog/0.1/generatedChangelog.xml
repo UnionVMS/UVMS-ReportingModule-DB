@@ -148,7 +148,7 @@
             FOR EACH ROW
             DECLARE
             BEGIN
-            SELECT filter_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+            SELECT filter_seq.NEXTVAL INTO :NEW.FILTER_ID FROM DUAL;
             END trg_filter;
         </createProcedure>			
     </changeSet>
