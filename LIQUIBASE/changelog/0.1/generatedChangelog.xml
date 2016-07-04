@@ -139,48 +139,7 @@
     </changeSet>
 	
 	
-	<changeSet author="dubduan" id="14291890711706-31" dbms="oracle">
 	
-        <createProcedure>
-            CREATE OR REPLACE TRIGGER trg_filter
-            BEFORE INSERT
-            ON filter
-            FOR EACH ROW
-            DECLARE
-            BEGIN
-            SELECT filter_seq.NEXTVAL INTO :NEW.FILTER_ID FROM DUAL;
-            END trg_filter;
-        </createProcedure>			
-    </changeSet>
-	
-	
-	<changeSet author="dubduan" id="14291800791706-31" dbms="oracle">
-	
-        <createProcedure>
-            CREATE OR REPLACE TRIGGER trg_report
-            BEFORE INSERT
-            ON report
-            FOR EACH ROW
-            DECLARE
-            BEGIN
-            SELECT report_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
-            END trg_report;
-        </createProcedure>			
-    </changeSet>	
-	
-	<changeSet author="dubduan" id="14231802791906-31" dbms="oracle">
-	
-        <createProcedure>
-            CREATE OR REPLACE TRIGGER trg_execution_log
-            BEFORE INSERT
-            ON execution_log
-            FOR EACH ROW
-            DECLARE
-            BEGIN
-            SELECT execution_log_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
-            END trg_execution_log;
-        </createProcedure>			
-    </changeSet>	
 	
 	
 	
