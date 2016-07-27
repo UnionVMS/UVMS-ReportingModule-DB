@@ -63,6 +63,7 @@
             <column name="min_speed" type="FLOAT"/>
             <column name="mov_type" type="VARCHAR(30)"/>
             <column name="mov_activity" type="VARCHAR(30)"/>
+            <column name="mov_sources" type="VARCHAR(255)"/>
             <column name="max_time" type="FLOAT"/>
             <column name="min_time" type="FLOAT"/>
             <column name="min_duration" type="FLOAT"/>
