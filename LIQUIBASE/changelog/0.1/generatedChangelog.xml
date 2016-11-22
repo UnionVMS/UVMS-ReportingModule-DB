@@ -130,6 +130,9 @@
             <column name="visibility" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="report_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 	
