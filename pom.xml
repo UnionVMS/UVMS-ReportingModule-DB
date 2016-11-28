@@ -4,7 +4,7 @@
 
     <groupId>eu.europa.ec.fisheries.uvms.reporting</groupId>
     <artifactId>reporting-db</artifactId>
-    <version>0.5.1</version>
+    <version>0.5.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -60,7 +60,7 @@
             scm:git:https://emserveje@webgate.ec.europa.eu/CITnet/stash/scm/unionvms/uvms-reportingmodule-db.git
         </developerConnection>
         <url>https://emserveje@webgate.ec.europa.eu/CITnet/stash/scm/unionvms/</url>
-      <tag>reporting-db-0.5.1-SNAPSHOT</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>
