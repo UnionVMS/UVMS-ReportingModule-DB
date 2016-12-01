@@ -78,15 +78,12 @@
             </column>
 			<column name="area_type" type="VARCHAR(255)"/>
             <column name="area_id" type="BIGINT"/>
-            <column name="report_type" type="VARCHAR(255)"/>
-            <column name="activity_type" type="VARCHAR(255)"/>
-            <column name="master" type="VARCHAR(255)"/>
+            <column name="report_types" type="CLOB"/>
+            <column name="activity_types" type="CLOB"/>
+            <column name="masters" type="CLOB"/>
             <column name="species" type="CLOB"/>
-            <column name="port_departure" type="VARCHAR(255)"/>
-            <column name="port_arrival" type="VARCHAR(255)"/>
-            <column name="port_landing" type="VARCHAR(255)"/>
-            <column name="gear_onboard" type="VARCHAR(255)"/>
-            <column name="gear_deployed" type="VARCHAR(255)"/>
+            <column name="ports" type="CLOB"/>
+            <column name="gears" type="CLOB"/>
             <column name="weight_min" type="FLOAT"/>
             <column name="weight_max" type="FLOAT"/>
             <column name="weight_unit" type="VARCHAR(255)"/>
