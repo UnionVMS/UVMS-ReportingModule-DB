@@ -63,6 +63,7 @@
 
     <profiles>
         <profile>
+            <id>dg-mare</id>
             <distributionManagement>
                 <repository>
                     <id>digit-releases</id>
