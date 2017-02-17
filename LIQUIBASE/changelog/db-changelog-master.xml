@@ -6,6 +6,4 @@
 	<include file="0.1/generatedChangelog.xml" relativeToChangelogFile="true" />
 	<include file="0.1/testData.xml" relativeToChangelogFile="true"/>
 
-        <include file="UNIONVMS-2092/2017-09-02.xml" relativeToChangelogFile="true"/>
- 
 </databaseChangeLog> 
