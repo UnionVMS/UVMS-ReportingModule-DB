@@ -10,9 +10,9 @@
 	
 	<changeSet author="dubduan" id="143522323-1" dbms="postgresql">
         <sql>
-			ALTER TABLE report DISABLE TRIGGER REPORTING;
-			ALTER TABLE filter DISABLE TRIGGER REPORTING;
-			ALTER TABLE execution_log DISABLE TRIGGER REPORTING;			
+			ALTER TABLE report DISABLE TRIGGER trg_report;
+			ALTER TABLE filter DISABLE TRIGGER trg_filter;
+			ALTER TABLE execution_log DISABLE TRIGGER trg_execution_log;
         </sql>	
     </changeSet>	
 	

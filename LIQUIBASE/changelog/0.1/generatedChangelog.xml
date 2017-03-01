@@ -130,6 +130,30 @@
     <changeSet author="rinaldgr (generated)" id="1443778291188-9">
         <addForeignKeyConstraint baseColumnNames="report_id" baseTableName="execution_log" constraintName="fk_k4epdh9wpjr4fao3qh6ap0hpt" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="report"/>
     </changeSet>
+
+    <changeSet author="dubduan" id="16834688168717" dbms="postgresql">
+        <addDefaultValue
+                columnDataType="BIGINT"
+                columnName="id"
+                defaultValueSequenceNext="execution_log_seq"
+                tableName="execution_log"/>
+    </changeSet>
+
+    <changeSet author="dubduan" id="12884688168711" dbms="postgresql">
+        <addDefaultValue
+                columnDataType="BIGINT"
+                columnName="filter_id"
+                defaultValueSequenceNext="filter_seq"
+                tableName="filter"/>
+    </changeSet>
+
+    <changeSet author="dubduan" id="12882228169711" dbms="postgresql">
+        <addDefaultValue
+                columnDataType="BIGINT"
+                columnName="id"
+                defaultValueSequenceNext="report_seq"
+                tableName="report"/>
+    </changeSet>
 	
 	
 	<changeSet author="dubduan" id="14291890711706-31" dbms="oracle">
@@ -179,14 +203,28 @@
 	<changeSet author="dubduan" id="1429112312d-31" dbms="postgresql">
 	
         <createProcedure>
+            CREATE OR REPLACE FUNCTION inc_filter_sq()
+            RETURNS "trigger" AS
+            $BODY$
+            BEGIN
+            New.id:=nextval('reporting.filter_seq');
+            Return NEW;
+            END;
+            $BODY$
+            LANGUAGE 'plpgsql' VOLATILE;
+
+
+            CREATE TRIGGER trg_filter
+            before insert on reporting.filter
+            for each row EXECUTE procedure inc_filter_sq()
 						
-			CREATE TRIGGER trg_filter
+<!--			CREATE TRIGGER trg_filter
 			before insert on filter
 			for each row
 			when(new.FILTER_ID is null)
 			begin
 				select filter_seq.nextval into :new.FILTER_ID from dual;
-			end;			
+			end;-->
 			
         </createProcedure>			
     </changeSet>
@@ -195,15 +233,29 @@
 	<changeSet author="dubduan" id="1rfe310791706-31" dbms="postgresql">
 	
         <createProcedure>
+            CREATE OR REPLACE FUNCTION inc_report_sq()
+            RETURNS "trigger" AS
+            $BODY$
+            BEGIN
+            New.id:=nextval('reporting.report_seq');
+            Return NEW;
+            END;
+            $BODY$
+            LANGUAGE 'plpgsql' VOLATILE;
+
+
+            CREATE TRIGGER trg_report
+            before insert on reporting.report
+            for each row EXECUTE procedure inc_report_sq()
 		
 		
-			CREATE TRIGGER trg_report
+<!--			CREATE TRIGGER trg_report
 			before insert on report
 			for each row
 			when(new.ID is null)
 			begin
 				select report_seq.nextval into :new.ID from dual;
-			end;			
+			end;-->
 				
         </createProcedure>			
     </changeSet>	
@@ -211,14 +263,28 @@
 	<changeSet author="dubduan" id="142318dfd1906-31" dbms="postgresql">
 	
         <createProcedure>
+            CREATE OR REPLACE FUNCTION inc_execution_log_sq()
+            RETURNS "trigger" AS
+            $BODY$
+            BEGIN
+            New.id:=nextval('reporting.execution_log_seq');
+            Return NEW;
+            END;
+            $BODY$
+            LANGUAGE 'plpgsql' VOLATILE;
 
-			CREATE TRIGGER trg_execution_log
+
+            CREATE TRIGGER trg_execution_log
+            before insert on reporting.execution_log
+            for each row EXECUTE procedure inc_execution_log_sq()
+
+<!--			CREATE TRIGGER trg_execution_log
 			before insert on execution_log
 			for each row
 			when(new.ID is null)
 			begin
 				select execution_log_seq.nextval into :new.ID from dual;
-			end;					
+			end;	-->
         </createProcedure>			
     </changeSet>	
 	
