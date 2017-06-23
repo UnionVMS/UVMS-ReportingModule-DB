@@ -6,5 +6,6 @@
 	<include file="0.1/generatedChangelog.xml" relativeToChangelogFile="true" />
 	<include file="0.1/testData.xml" relativeToChangelogFile="true"/>
 	<include file="0.1/disableTriggers.xml" relativeToChangelogFile="true"/>
- 
+	<include file="1.0.2/db-changelog-102-001.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog> 
