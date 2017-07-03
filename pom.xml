@@ -13,6 +13,7 @@
         <ojdbc6.version>11.2.0.4</ojdbc6.version>
         <maven.release.plugin.version>2.5.2</maven.release.plugin.version>
         <maven.scm.provider.version>2.1.1</maven.scm.provider.version>
+        <maven-release-plugin>2.5.3</maven-release-plugin>
 
         <scm.connection>scm:git:https://github.com/UnionVMS/UVMS-ReportingModule-DB.git</scm.connection>
     </properties>
