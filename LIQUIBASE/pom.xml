@@ -95,16 +95,6 @@
                             <defaultSchemaName>${db.defaultSchema}</defaultSchemaName>
                             <outputChangeLogFile>${db.outputFile}</outputChangeLogFile>
                         </configuration>
-                        <executions>
-                            <execution>
-                                <id>update-schema</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>update</goal>
-                                    <goal>tag</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>
