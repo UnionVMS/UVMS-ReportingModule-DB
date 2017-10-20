@@ -4,7 +4,7 @@
 
     <groupId>eu.europa.ec.fisheries.uvms.reporting</groupId>
     <artifactId>reporting-db</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -59,7 +59,7 @@
 
     <scm>
         <connection>${scm.connection}</connection>
-      <tag>reporting-db-1.0.4</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <profiles>
